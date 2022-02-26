@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE myimages:img [  
+<!NOTATION jpg PUBLIC "JPG 1.0">
+<!NOTATION gif PUBLIC "GIF 1.0" "image/gif">
+<!NOTATION png PUBLIC "PNG" "image/png">
+<!ENTITY c SYSTEM "copyright.xml">
+<!ENTITY companyLogo PUBLIC "-//ProWebMo//Logo PNG//EN" "http://www.liquid-technologies.com/Content/images/liquid-logo.png" NDATA png >
+<!ELEMENT myimages:img (myimages:copy)>
+<!ELEMENT myimages:copy (#PCDATA)>
+<!ATTLIST myimages:img 
+	src ENTITY #REQUIRED
+	xmlns:myimages CDATA #FIXED "urn:prowebmo:imagenamespace"
+	>
+]>
+<myimages:img xmlns:myimages="urn:prowebmo:imagenamespace" src="&companyLogo;" >
+	<myimages:copy>
+		&c;
+	</myimages:copy>
+</myimages:img>

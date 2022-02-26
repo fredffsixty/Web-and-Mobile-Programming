@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Semplice API per i cookie</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <script src="cookie.js"></script>
+</head>
+
+<body>
+    Usare la API nella console
+
+    <script>
+        setCookie('id', '12345', {
+            'expires': '2023-05-7',
+        });
+        console.log(document.cookie);
+        setCookie('foo', 'bar', {
+            'expires': new Date('12/07/2022'),
+        });
+        console.log(document.cookie);
+        console.log(getAllCookies());
+    </script>
+</body>
+
+</html>

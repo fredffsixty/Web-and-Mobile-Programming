@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('partials/head') -%>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+        <% include partials/navbar.ejs %>
+            <!-- corpo centrale -->
+            <div class="container my-3">
+                <div class="row">
+                    <% include partials/post_accordion.ejs %>
+                        <div class="container col-sm-8 mt-3">
+                            <h1 class="display-1">Home Page</h1>
+                            <div class="row">
+                                <div class="col-sm-6 text-justify">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum libero eu purus gravida, at suscipit enim dictum. Donec id ligula a urna maximus congue ac eu libero. Ut imperdiet a lacus nec aliquet. Nullam vitae ante sit amet felis auctor gravida
+                                    egestas sit amet ante. Fusce et leo sapien. Sed tristique non mi non rutrum. Nullam venenatis elit vulputate leo faucibus consequat. Pellentesque congue eleifend est at suscipit. Quisque ex eros, euismod quis massa
+                                    sit amet, ultrices laoreet lacus. Nam scelerisque cursus sapien, eget convallis tellus tincidunt id. Quisque tortor magna, volutpat in est at, venenatis vulputate lacus. Cras suscipit quis nisl at luctus. Donec dignissim
+                                    in dui mattis dapibus.
+                                </div>
+                                <div class="col-sm-6 text-justify">
+                                    Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam facilisis, odio sed imperdiet fringilla, mauris risus eleifend erat, elementum fringilla lacus magna sit amet ligula. Phasellus aliquam nibh non sem porttitor pellentesque. Nullam nec ipsum
+                                    condimentum, dapibus ipsum eu, ultrices tortor. Donec a mattis ex, in suscipit est. Phasellus pellentesque arcu at ipsum porta luctus non sit amet nibh. Donec commodo urna ac erat pellentesque porttitor. Ut iaculis
+                                    nisi nec aliquam dignissim. Morbi luctus tellus eu ultricies accumsan. Aliquam sit amet vulputate augue, et pellentesque diam. Suspendisse egestas pharetra arcu et vulputate. Curabitur rutrum pulvinar neque, et condimentum
+                                    sapien faucibus sed.
+                                </div>
+                                <div class="btn-group mx-auto mt-2">
+                                    <a href="accedi" class="btn btn-info" role="button">&nbsp;Accedi&nbsp;</a>
+                                    <a href="registrati" class="btn btn-info" role="button">Registrati</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% include partials/posts.ejs %>
+                </div>
+            </div>
+            <% include partials/footer.ejs %>
+</body>
+
+</html>

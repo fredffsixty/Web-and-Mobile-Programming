@@ -1,0 +1,158 @@
+/* Regole generali */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+
+/* --- Regole di layout --- */
+
+body {
+    width: 100%;
+    font: 18px/27px Arial, Helvetica, sans-serif;
+}
+
+figure>img {
+    width: 100%;
+}
+
+#container {
+    margin: auto;
+    width: 100%;
+}
+
+header {
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 2em;
+}
+
+header>figure {
+    float: left;
+    width: 160px;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+header>p {
+    text-align: inherit;
+    margin-right: 160px;
+}
+
+nav {
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+footer {
+    height: 130px;
+    line-height: 130px;
+    text-align: center;
+    font-size: 1.5em;
+    clear: right;
+}
+
+aside {
+    float: right;
+    width: 35%;
+    padding: 10px;
+}
+
+article {
+    text-align: left;
+}
+
+article:not(:first-child) {
+    padding-top: 10px;
+}
+
+section {
+    padding: 10px;
+    width: 65%;
+    min-height: 700px;
+}
+
+section>figure {
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+figcaption {
+    text-align: center;
+}
+
+
+/* --- Regole per colori, sfondi e bordi --- */
+
+#container {
+    background-color: blanchedalmond;
+}
+
+header {
+    background-color: darkblue;
+    color: aliceblue;
+}
+
+nav {
+    background-color: aliceblue;
+    color: darkblue;
+    border-bottom: 1px solid darkblue;
+}
+
+section {
+    background-color: ivory;
+    color: slateblue;
+    border-right: 1px solid darkblue;
+}
+
+figcaption {
+    font-style: italic;
+    color: darkblue;
+    border-top: 1px dotted darkcyan;
+}
+
+section>figure {
+    border: 1px dotted darkcyan;
+}
+
+footer {
+    background-color: cadetblue;
+    color: cornsilk;
+    border-top: 1px solid darkblue;
+}
+
+time {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+aside {
+    color: brown;
+}
+
+article:not(:last-child) {
+    border-bottom: 1px solid brown;
+}
+
+nav>a:link,
+nav>a:visited {
+    text-decoration: none;
+}
+
+nav>a:hover,
+nav>a:focus,
+nav>a:active {
+    text-decoration: overline underline;
+    font-style: italic;
+    color: brown;
+}

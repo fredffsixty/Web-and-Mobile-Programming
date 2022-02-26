@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Caricamento moduli con require ad hoc</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='form.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <style>
+
+    </style>
+
+    <script>
+        // questo script implementa una readFile basata sull'uso della
+        // tecnologia AJAX a partire da file cricati dall'utente
+
+
+        function readFile(modulename, requiringPath) {
+
+            let code = "";
+            let requestedPath = '';
+            let filenames = [];
+
+            // creazione del percorso del file secondo
+            // la prassi CommonJS: 
+            // './percorso/delmodulo' --> '/percorso richiedente/percorso/delmodulo.js'
+            // 'nomemodulo' --> '/percorso richiedente/node-modules/momemodulo.js', '/node-modules/momemodulo.js'
+
+            if (/^\.\/.+/.test(modulename))
+                filenames[0] = requiringPath + modulename.slice(modulename.indexOf('/') + 1) + '.js';
+            else {
+                filenames[0] = requiringPath + modulename + '.js';
+                filenames[1] = requiringPath + 'node-modules/' + modulename + '.js';
+                filenames[2] = '/node-modules/' + modulename + '.js';
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    code = this.responseText;
+                    requestedPath = this.responseURL.slice(0, this.responseURL.lastIndexOf('/') + 1)
+                }
+            };
+
+            xhttp.open("GET", filenames[0], false);
+            xhttp.send();
+
+            let requestNum = 1;
+            while (requestNum < filenames.length) {
+                if (xhttp.status == 404) {
+                    xhttp.open("GET", filenames[requestNum], false);
+                    xhttp.send();
+                }
+                requestNum++;
+            }
+
+            return {
+                code,
+                requestedPath
+            };
+        }
+
+
+        // Implementiamo la nostra require()
+        require.cache = Object.create(null);
+
+        function require(name) {
+            if (!(name in require.cache)) {
+                let {
+                    code,
+                    path
+                } = readFile(name);
+                let module = {
+                    exports: {}
+                };
+                require.cache[name] = module;
+
+                let wrapper = new Function("require, exports, module", code);
+                wrapper(require, module.exports, module);
+            }
+
+            return require.cache[name].exports;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Caricamento Moduli per Esecuzione su Console</h1>
+
+    <form class="myform" action="#" onsubmit="return loadModules()">
+        <fieldset>
+            <legend>Scelta dei moduli</legend>
+            <label class="mandatory" for="upload">Nome di moduli</label>
+            <input id="upload" name="upload" type="file" accept="application/javascript, application/ecmascript, text/javascript, text/ecmascript" multiple/> &nbsp;&nbsp;&nbsp;
+
+        </fieldset>
+        <br>
+        <input name="ok" id="ok" type="submit" value="Invia" formtarget="_blank" />
+    </form>
+    <script>
+        let modules = document.forms[0].upload;
+
+        let msg = document.createElement('p');
+        msg.className = 'mandatory';
+        msg.innerText = 'I moduli richiesti sono usfruibili nella console';
+
+        modules.addEventListener('change', event => {
+            if (document.forms[0].lastChild == msg)
+                msg.parentElement.removeChild(msg);
+        });
+
+        function loadModules() {
+
+            for (let file of modules.files) {
+                let modulename = file.name.split('.')[0];
+                eval(modulename + ' = require(\"' + modulename + '\")');
+            }
+
+            document.forms[0].appendChild(msg);
+
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

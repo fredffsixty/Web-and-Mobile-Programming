@@ -1,0 +1,83 @@
+/* --- Regole generali --- */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* --- Regole per il menu principale e dropdown --- */
+
+.menu,
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu,
+.menu ul {
+    position: relative;
+    width: 160px;
+    border: 1px solid blue;
+}
+
+.menu li {
+    height: 40px;
+    padding: 0;
+    border-bottom: 1px solid blue;
+}
+
+.menu li:last-child {
+    height: 39px;
+    border-bottom: none;
+}
+
+.menu a {
+    display: block;
+    text-align: center;
+    line-height: 39px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    height: 39px;
+}
+
+.menu a:link,
+.menu a:visited {
+    background-color: #eef;
+    color: #337;
+    text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus,
+.menu a:active {
+    background-color: #efe;
+    color: #bb0;
+    text-decoration: overline underline;
+}
+
+
+/* --- Regole specifiche per dropdown --- */
+
+.menu .submenu {
+    position: relative;
+}
+
+.menu ul {
+    display: none;
+    position: absolute;
+    left: 158px;
+    /* si calcola due pixel in meno a sinistra per ottenere
+    la sovrapposizione dei bordi in modo che un sottomenu che 
+    si estende dopo la fine del menu principale abbia il proprio bordo */
+    top: -1px;
+    /* il sottomenu è contenuto nel tasto e quindi sta
+    sotto il bordo di quest'ultimo: bisogna tirarlo su di 1px
+    per ottenere l'allineamento dei bordi */
+}
+
+.menu .submenu:hover ul,
+.menu .submenu:focus ul,
+.menu .submenu:active ul {
+    display: block;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('partials/head') -%>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+        <% include partials/navbar.ejs %>
+            <!-- corpo centrale -->
+            <div class="container my-3">
+                <div class="row">
+                    <% include partials/post_accordion.ejs %>
+                        <% include partials/regform.ejs %>
+                            <% include partials/posts.ejs %>
+                </div>
+            </div>
+            <% include partials/footer.ejs %>
+                <script src="/javascripts/formval.js"></script>
+</body>
+
+</html>

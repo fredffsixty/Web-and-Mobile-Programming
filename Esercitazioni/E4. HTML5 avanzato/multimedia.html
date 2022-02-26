@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di inserimento di multimedia</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='form.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <script>
+    </script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Esempio di uso di elementi multimediali</h1>
+    <picture>
+        <source media="screen and (max-width: 450px)" srcset="images/img_orange_flowers.jpg"></source>
+        <source media="screen and (max-width: 768px)" srcset="images/img_white_flower.jpg"></source>
+        <img src="images/img_pink_flowers.jpg" />
+    </picture>
+    <br><br>
+
+    <audio controls>
+        <source src="multimedia/sample.wav" type="audio/wav"></source>
+      	<source src="multimedia/horse.mp3" media="screen and (max-width: 450px)" type="audio/mp3"></source>
+    </audio>
+    <br><br>
+
+    <video width="500" controls>
+      	<source src="multimedia/sample.mp4" type="video/mp4"></source>
+        <source src="multimedia/sample.mov" type="video/mp4"></source>
+      	<source src="multimedia/sample.avi" type="video/avi"></source>
+      </video>
+    <br><br>
+
+    <embed src="multimedia/sample.swf" width="500"></embed>
+    <br><br>
+
+    <object type="application/x-java-applet" height="300" width="550">
+  		<param name="code" value="Sample" />
+  		<param name="archive" value="multimedia/Sample.jar" />
+  		Applet failed to run.  No Java plug-in was found.
+    </object>
+    <br><br>
+
+    <!-- Inserimento video YouTube -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/EodytPmki5s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+
+<?xml-stylesheet type="text/xsl" href="employees.xsl"?>
+<!--
+<!DOCTYPE employees [
+<!ELEMENT employees (employee*) >
+<!ELEMENT employee (phonenumber*) >
+<!ATTLIST employee name CDATA #REQUIRED>
+<!ELEMENT phonenumber (#PCDATA) >
+<!ATTLIST phonenumber type (home | mobile | office | fax) #REQUIRED >
+]>
+-->
+<emp:employees xmlns:emp="urn:prowebmo:emp"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="urn:prowebmo:emp employees.xsd">
+
+  <emp:employee name="Roberto Pirrone">
+    <emp:phonenumber type="mobile"> 39333444555666</emp:phonenumber>
+    <emp:phonenumber type="home"> 39091889911</emp:phonenumber>
+  </emp:employee>
+</emp:employees>

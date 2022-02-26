@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Porgress bar animata</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Progress Bar With Label</h2>
+        <div class="progress">
+            <div class="progress-bar" style="width:0%">0%</div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            let tID = 0
+
+            function animatePorgressBar(progress, tID) {
+
+                $('.progress-bar').css({
+                    'width': `${progress}%`
+                }).text(`${progress}%`);
+
+                if (progress == 100)
+                    clearTimeout(tID)
+                else
+                    tID = setTimeout(animatePorgressBar, 1000, progress + 1, tID);
+            }
+            animatePorgressBar(0, tID);
+        });
+    </script>
+
+</body>
+
+</html>

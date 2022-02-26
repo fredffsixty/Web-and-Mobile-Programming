@@ -1,0 +1,102 @@
+/* --- Regole generali --- */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* --- Regole per il menu principale e dropdown --- */
+
+.menu,
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    position: relative;
+    width: 801px;
+    /* 4 x 160 + 159 (ultimo tasto) + 2 (bordi del menu) = 801 */
+    height: 41px;
+    margin: auto;
+    border: 1px solid blue;
+}
+
+.menu li {
+    height: 40px;
+    padding: 0;
+}
+
+.menu>li {
+    float: left;
+    width: 160px;
+    border-right: 1px solid blue;
+}
+
+.menu>li:last-child {
+    width: 159px;
+    border-right: none;
+}
+
+.menu a {
+    display: block;
+    text-align: center;
+    line-height: 39px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    height: 39px;
+}
+
+.menu a:link,
+.menu a:visited {
+    background-color: #eef;
+    color: #337;
+    text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus,
+.menu a:active {
+    background-color: #efe;
+    color: #bb0;
+    text-decoration: overline underline;
+}
+
+
+/* --- Regole specifiche per dropdown --- */
+
+.menu .submenu {
+    position: relative;
+}
+
+.menu ul {
+    display: none;
+    position: absolute;
+    width: 161px;
+    border-right: 1px solid blue;
+    border-left: 1px solid blue;
+    border-bottom: 1px solid blue;
+    top: 40px;
+    /* si calcola un pixel in meno in alto per ottenere
+    la condivisione dei bordi */
+    left: -1px;
+    /* il sottomenu è contenuto nel tasto e quindi sta
+    a destra del bordo di quest'ultimo: bisogna tirarlo a sinistra di 1px
+    per ottenere l'allineamento dei bordi */
+}
+
+.menu .submenu li {
+    border-bottom: 1px solid blue;
+}
+
+.menu .submenu li:last-child {
+    border-bottom: none;
+    height: 39;
+}
+
+.menu .submenu:hover ul,
+.menu .submenu:focus ul,
+.menu .submenu:active ul {
+    display: block;
+}

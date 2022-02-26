@@ -1,0 +1,13 @@
+<libro>
+  <intestazione>
+    Le avventure di Pinocchio
+  </intestazione>
+
+  <autore>Carlo Collodi</autore>
+
+  <titolo>Le avventure di Pinocchio</titolo>
+  <capitolo>
+    <intestazioneCapitolo>Capitolo I</intestazioneCapitolo>
+    <titolo>Come andò che Maestro Ciliegia, falegname, trovò un pezzo di legno, che piangeva e rideva come un bambino.</titolo>
+  </capitolo>
+</libro>

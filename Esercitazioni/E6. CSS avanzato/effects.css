@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: ItalianBreakfast;
+    src: url(multimedia/ItalianBreakfast-Regular.otf);
+}
+
+#graphics {
+    font-family: ItalianBreakfast;
+    margin: auto;
+    width: 800px;
+    text-shadow: 0 0 5px darkblue;
+    box-shadow: 2px 2px 8px darkslategrey;
+    background: linear-gradient(to bottom right, lightcyan, rgba(0, 49, 84, 0.1));
+    border-radius: 50%;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+img {
+    display: flexbox;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px darkslategrey;
+}
+
+#img1 {
+    filter: sepia(100%);
+}
+
+#img2 {
+    filter: drop-shadow(8px 8px 10px red);
+}
+
+#img3 {
+    filter: grayscale(100%) blur(2px) contrast(120%) brightness(80%);
+}
+
+#img4 {
+    filter: hue-rotate(120deg) opacity(0.2);
+}
+
+img.rotazione {
+    transition: transform 4s ease-in-out;
+}
+
+img.rotazione:hover {
+    transform: rotate(45deg);
+}
+
+img.opaco {
+    transition: opacity 2s;
+}
+
+img.opaco:hover {
+    opacity: 0.1;
+}
+
+.animato {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: rollingsquare;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    transform-origin: 20px 20px;
+}
+
+@keyframes rollingsquare {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: yellow;
+        transform: translateX(400px) rotate(-60deg);
+    }
+    /* E' possibile specificare anche momenti dell'animazione come
+       0%, 25%, 50%, 75%, 100% */
+}

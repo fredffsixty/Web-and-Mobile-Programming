@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('partials/head') -%>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+        <% include partials/navbar.ejs %>
+            <!-- corpo centrale -->
+            <div class="container my-3">
+                <div class="row">
+                    <% include partials/post_accordion.ejs %>
+                        <div class="container col-sm-8 mt-3">
+                            <table class="table table-striped table-inverse table-responsive">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>Utente:</th>
+                                        <th>
+                                            <%= profile.user %>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% Object.keys(profile.data).forEach(element => { %>
+                                        <tr>
+                                            <td scope="row">
+                                                <% if (element == 'localita') { %>
+                                                    <%='Località' %>
+                                                        <% } else if (element == 'data_nascita') { %>
+                                                            <%='Data di Nascita' %>
+                                                                <% } else { %>
+                                                                    <%= element[0].toUpperCase()+element.slice(1) %>
+                                                                        <% } %>
+                                            </td>
+                                            <td>
+                                                <%= profile.data[element] %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <% include partials/posts.ejs %>
+                </div>
+            </div>
+            <% include partials/footer.ejs %>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lettura di file</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <script src="filereader.js"></script>
+</head>
+
+<body>
+    <form class="myform" action="#" onsubmit="return readFiles()">
+        <fieldset>
+            <legend>Lettura file</legend>
+            <label class="mandatory" for="upload">Carica file</label>
+            <input id="upload" name="upload" type="file" multiple/> &nbsp;&nbsp;&nbsp;
+
+        </fieldset>
+        <br>
+        <input name="ok" id="ok" type="submit" value="Invia" formtarget="_blank" />
+    </form>
+
+
+    <script>
+        let modules = document.forms[0].upload;
+
+        let msg = document.createElement('p');
+
+        modules.addEventListener('change', event => {
+            if (document.forms[0].lastChild == msg) {
+                msg.innerHTML = '';
+                msg.parentElement.removeChild(msg);
+            }
+        });
+
+        function readFiles() {
+
+            for (let file of modules.files) {
+                readTextFile(file).then(text => {
+                        msg.innerHTML += '<br><br>' + text;
+                    },
+                    error => {
+                        msg.innerHTML = error.message;
+                    })
+            }
+
+            document.forms[0].appendChild(msg);
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

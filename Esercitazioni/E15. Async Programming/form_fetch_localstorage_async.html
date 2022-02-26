@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='form.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <style>
+        /*
+         * classi di forza della password espresse 
+         * come colore di background del campo password
+         */
+        
+        .weak {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .medium {
+            background-color: rgba(255, 165, 0, 0.3);
+        }
+        
+        .strong {
+            background-color: rgba(60, 179, 113, 0.3);
+        }
+    </style>
+    <script>
+        // questo script esegue il caricamento asincrono dei dati
+        // di regioni province e comuni il salvataggio nello storage locale
+        // e usa le parole chiave async/await
+
+        async function myFetch(datafile, itemName) {
+            let response = await fetch(datafile); // response è una Promise ottenuta da fetch
+
+            let type = response.headers.get('Content-Type');
+
+            let data = {}
+
+            if (type.indexOf('text/html') != -1 || type.indexOf('text/xml') != -1) {
+                data = await response.text();
+                // Il codice seguente è eseguito solo dopo che la seconda Promise è stata risolta
+                localStorage.setItem(itemName, data);
+            } else if (type.indexOf('json') != -1) {
+                data = await response.json();
+                // Il codice seguente è eseguito solo dopo che la seconda Promise è stata risolta
+                localStorage.setItem(itemName, JSON.stringify(data));
+            } else {
+                data = await response.arrayBuffer().then(buffer => {
+                    localStorage.setItem(storageName, JSON.stringify(new Int8Array(buffer)));
+                });
+            }
+
+
+            // Il codice seguente è eseguito solo dopo che la prima Promise è stata risolta
+            console.log(`Status: ${response.status} ${response.statusText}`);
+            console.log(`retrieved file: ${response.url}`);
+            console.log(`type: ${response.headers.get('Content-Type')}`);
+
+        }
+
+        myFetch('./regioni_province_comuni.json', 'regionData').catch(reason => {
+            console.log('There was a problem while loading the resource: ' + reason.message());
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Esempio di Form</h1>
+
+    <form class="myform" action="#" onsubmit="return recapWindow()">
+        <fieldset>
+            <legend>Dati anagrafici</legend>
+            <label class="mandatory" for="name">Cognome e Nome *</label>
+            <input id="name" name="name" type="text" size="40" maxlength="40" required/> &nbsp;&nbsp;&nbsp;
+
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Uomo</label><br> &thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Donna</label> &Tab;
+            <br /><br />
+
+            <label class="mandatory">Nato a:</label><br><br>
+
+            <label class="mandatory" for="region">Regione *</label>
+            <select id="region" name="region" required>
+                <option value="-1" selected></option>
+                <option value="0">Abruzzo</option>
+                <option value="1">Basilicata</option>
+                <option value="2">Calabria</option>
+                <option value="3">Campania</option>
+                <option value="4">Emilia-Romagna</option>
+                <option value="5">Friuli-Venezia Giulia</option>
+                <option value="6">Lazio</option>
+                <option value="7">Liguria</option>
+                <option value="8">Lombardia</option>
+                <option value="9">Marche</option>
+                <option value="10">Molise</option>
+                <option value="11">Piemonte</option>
+                <option value="12">Puglia</option>
+                <option value="13">Sardegna</option>
+                <option value="14">Sicilia</option>
+                <option value="15">Toscana</option>
+                <option value="16">Trentino-Alto Adige</option>
+                <option value="17">Umbria</option>
+                <option value="18">Valle d'Aosta</option>
+                <option value="19">Veneto</option>
+              </select>
+
+            <label class="mandatory" for="state">Provincia *</label>
+            <select id="state" name="state" required>
+                <option value="-1" selected></option>
+            </select>
+
+            <br /><br />
+
+            <label class="mandatory" for="town">Comune *</label>
+            <select id="town" name="town" required>
+                <option value="-1" selected></option>
+            </select>
+
+            <br /><br />
+
+            <label class="mandatory" for="birthdate">Data di Nascita *</label>
+            <input name="birthdate" id="birthdate" type="date" required/>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Indirizzo</legend>
+            <label for="address">Via/Piazza</label>
+            <input name="address" id="address" type="text" size="40" maxlength="40" /> &nbsp;&nbsp;&nbsp;
+
+            <label for="addressnum">N.</label>
+            <input name="addressnum" id="addressnum" type="number" max="9999" size="4" maxlength="4" disabled />
+
+            <br><br>
+
+            <label for="city">Località</label> &nbsp;&nbsp;&nbsp;
+            <input name="city" id="city" type="text" size="15" maxlength="15" disabled />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <label for="cap">CAP.</label>
+            <input name="cap" id="cap" type="tel" pattern="^\d{5}$" placeholder="#####" title="Inserire 5 cifre da 00100 a 98168" size="5" maxlength="5" disabled />
+
+            <br /><br />
+
+            <label for="tel">Tel.</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="tel" id="tel" type="tel" placeholder="(+/00)PPLLLNNNNNNN" pattern="((((\+|00)[1-9]{2})|0)?([1-9]{2,3}))([0-9]{6,10})" title="Inserire il numero di telefono nel formato (+|00)<pref. int.><pref. loc.><numero> oppure 0<pref. loc.><numero>" size="20"
+                maxlength="20" disabled />
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Autenticazione</legend>
+            <label class="mandatory" for="email">E-mail *</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="email" id="email" type="email" size="32" maxlength="40" required/><br /><br />
+
+            <label class="mandatory" for="pass">Password *</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="pass" id="pass" type="password" title="Almeno 8 caratteri, una lettera maiuscola e un numero" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" size="32" maxlength="40" required/><br /><br />
+
+            <label class="mandatory" for="repass">Reinserisci password *</label>&nbsp;
+            <input name="repass" id="repass" type="password" size="32" maxlength="40" onchange="checkPassword(this)" required/>
+        </fieldset>
+        <br>
+        <input name="ok" id="ok" type="submit" value="Invia" formtarget="_blank" />
+    </form>
+    <script>
+        let pass = document.getElementById("pass");
+        let address = document.getElementById("address");
+        let region = document.getElementById("region");
+        let state = document.getElementById("state");
+        let town = document.getElementById("town");
+
+        let db = JSON.parse(localStorage.getItem('regionData'));
+        let province = null;
+
+        // espressioni regolari per la forza delle password
+        const weakPass = new RegExp("^((?=.*[a-z]).{8,}|(?=.*[a-z])(?=.*[A-Z]).{8,})$");
+        const mediumPass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$");
+        const strongPass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$");
+
+
+        address.addEventListener('focusout', function(event) {
+            inputFields = this.parentElement.getElementsByTagName('input');
+
+            if (this.value == '') {
+                for (input of inputFields)
+                    if (input != this && !input.disabled) {
+                        input.disabled = true;
+                        input.value = '';
+                    }
+            } else
+                for (input of inputFields)
+                    if (input != this && input.disabled) input.disabled = false;
+        });
+
+        // aggiungo la gestione dell'evento di pressione del tasto TAB
+        // che innesca il focusout, ma avviene prima
+        address.addEventListener('keydown', function(event) {
+            if (event.keyCode == 9) { // pressione di TAB
+
+                inputFields = this.parentElement.getElementsByTagName('input');
+
+                if (this.value == '') {
+                    for (input of inputFields)
+                        if (input != this && !input.disabled) {
+                            input.disabled = true;
+                            input.value = '';
+                        }
+                } else
+                    for (input of inputFields)
+                        if (input != this && input.disabled) input.disabled = false;
+
+            }
+        });
+
+        function checkPassword(input) {
+            if (input.value != pass.value) {
+                input.value = "";
+                input.placeholder = "Password non coincidenti!";
+                input.focus();
+            }
+        }
+
+        // gestione degli eventi per la forza della password
+        function strengthVal() {
+            // rimuove le classi di forza della password
+            // quando si reinserisce la password
+            this.classList.remove("strong", "medium", "weak");
+
+            // cancella le classi di forza
+            // quando il campo viene cancellato
+            if (this.value == "") this.classList.remove("strong", "medium", "weak");
+            // test della password con aggiunta della propria etichetta di classe
+            else if (strongPass.test(this.value))
+                this.classList.add("strong");
+            else if (mediumPass.test(this.value))
+                this.classList.add("medium");
+            else this.classList.add("weak");
+        }
+
+        // registra il gestore nell'elemento password
+        document.querySelector("[type='password']").addEventListener('input', strengthVal);
+
+        // finestra di riepilogo
+        function recapWindow() {
+            let data = new FormData(document.forms[0]);
+            let w = window.open("", "Recap", "width=600, height=600");
+
+            w.document.write(`<h1>Riepilogo dati utente: ${data.get('name')}</h1><br><br>\
+            <table>\
+                <tr><th align='left'>Genere:</th><td>${data.get('gender')=='male'?'Uomo':'Donna'}</td></tr>\
+                <tr><th align='left'>Data e luogo di nascita:</th><td>${new Date(data.get('birthdate')).toLocaleDateString()}\
+                    , ${data.get('town')} (${data.get('state').toUpperCase()}) - ${data.get('region')}</td></tr>\
+                <tr><th align='left'>Indirizzo:</th><td>${data.get('address')} n. ${data.get('addressnum')}\
+                    , ${data.get('cap')} ${data.get('city')}</td></tr>\
+                <tr><th align='left'>N. telefonico:</th><td>${data.get('tel')}</td></tr>\
+                <tr><th align='left'>Email:</th><td>${data.get('email')}</td></tr>\
+            </table>`);
+
+            // inibisce la navigazione verso la url inserita nell'attributo action della form
+            return false;
+        }
+
+        region.addEventListener('change', function(event) {
+
+            // rimozione dei precedenti elementi del menu Provincia e Comune
+            state.innerHTML = '<option value="-1" selected></option>';
+            town.innerHTML = '<option value="-1" selected></option>';
+
+            if (this.value != '-1') {
+                province = db.regioni[Number.parseInt(this.value)].province;
+
+                for (let provincia of province) {
+                    let opt = document.createElement('option');
+                    opt.value = provincia.code;
+                    opt.innerText = provincia.nome;
+                    state.appendChild(opt);
+                }
+            }
+
+        });
+
+        state.addEventListener('change', function(event) {
+            // rimozione dei precedenti elementi del menu Comune
+            town.innerHTML = '<option value="-1" selected></option>';
+
+            if (this.value != '-1')
+                for (let provincia of province) {
+                    if (provincia.code == state.value) {
+                        for (comune of provincia.comuni) {
+                            let opt = document.createElement('option');
+                            opt.value = comune.cap;
+                            opt.innerText = comune.nome;
+                            town.appendChild(opt);
+                        }
+                        break; // evitiamo di continuare a cercare
+                    }
+                }
+
+        });
+    </script>
+
+</body>
+
+</html>

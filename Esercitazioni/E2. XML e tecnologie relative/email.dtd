@@ -1,0 +1,7 @@
+<!ELEMENT email (to+, from, cc*, subject?, body, signature*)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT cc (#PCDATA)>
+<!ELEMENT subject (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+<!ELEMENT signature (#PCDATA)>

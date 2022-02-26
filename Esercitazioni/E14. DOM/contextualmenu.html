@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di menu contestuale</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='stilemenu.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- <ul class="contextmenu">
+        <li><a href="http://yahoo.com">Voce 1</a></li>
+        <li><a href="http://msn.it">Voce 2</a></li>
+        <li><a href="http://mail.google.com">Voce 3</a></li>
+        <li><a href="http://www.unipa.it">Voce 4</a></li>
+        <li><a href="http://www.google.it">Voce 5</a></li>
+    </ul> -->
+
+    <script>
+        //contextMenu = document.getElementsByClassName('contextmenu')[0];
+
+        function createContexMenu(URLArray) {
+
+            // creiamo la lista menu di contesto e 
+            // etichettiamola di classe "contextmenu"
+            let contextMenu = document.createElement('ul');
+            contextMenu.className = 'contextmenu';
+
+            // Generiamo l'elenco delle voci
+            for (let i = 0; i < URLArray.length; i++) {
+                // creiamo il list item e il link ipertestuale del singolo tasto
+                let li = document.createElement('li')
+                let a = document.createElement('a')
+
+                // aggiungiamo l'indirizzo della URL e il testo del tasto
+                a.setAttribute('href', URLArray[i]);
+                a.innerHTML = 'Voce ' + (i + 1);
+
+                // appendiamo <a> a <li> e <li> a <ul>
+                li.append(a);
+                contextMenu.append(li);
+            }
+
+            document.body.append(contextMenu);
+
+            return contextMenu;
+        }
+
+        let contextMenu = createContexMenu(new Array('http://yahoo.com',
+            'http://msn.it', 'http://mail.google.com',
+            'http://www.unipa.it', 'http://www.google.it'));
+
+
+        window.addEventListener('contextmenu', event => {
+
+            contextMenu.style.top = event.pageY + 'px';
+            contextMenu.style.left = event.pageX + 'px';
+            contextMenu.style.display = 'block';
+            event.preventDefault(); // blocchiamo il comportamento di default
+        });
+
+        window.addEventListener('click', event => {
+            if (event.button != 2 && contextMenu.style.display == 'block')
+                contextMenu.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

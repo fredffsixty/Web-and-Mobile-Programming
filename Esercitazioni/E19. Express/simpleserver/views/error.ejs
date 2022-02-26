@@ -1,0 +1,31 @@
+<head>
+    <%- include('partials/head') -%>
+        <title>
+            Errore
+        </title>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+        <!-- corpo centrale -->
+        <div class="container my-3">
+            <h1 class="display-4">Hmm ... sembra che qualcosa non va</h1>
+            <br>
+            <h1 class="display-6">
+                <% if (error.status) { %>
+                    HTTP Error
+                    <%= error.status %>:<br>
+                        <%= message %>
+                            <% } else { %>
+                                <%= message %>
+                                    <% } %>
+            </h1>
+            <br><br>
+            <a href="/" class="text-info">Home Page</a>
+
+        </div>
+
+        <% include partials/footer.ejs %>
+</body>
+
+</html>

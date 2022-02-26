@@ -1,0 +1,26 @@
+.box1 {
+    /* margin-top & margin-bottom ; margin-left & margin-right */
+    margin: 10px 5px;
+    /* border-width border-style border-color */
+    /* ognuno è declinabile nelle versioni *-top *-right *-bottom *-left */
+    border: 1px dotted darkslateblue;
+    /* padding-top padding-right padding-bottom padding-left */
+    padding: 5px 5px 10px 20px;
+    /*
+     * larghezza totale: 1px + 20px + 650px + 5px + 1px = 677px
+     */
+    /*width: 650px;*/
+    width: 300px;
+    background-color: lightcyan;
+    float: left;
+}
+
+.box2 {
+    /*position: absolute;
+    top: -150px;
+    left: 200px;*/
+    margin: auto;
+    max-width: 500px;
+    background-color: white;
+    float: left;
+}

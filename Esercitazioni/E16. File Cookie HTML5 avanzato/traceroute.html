@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Utilizzo delle API Google Maps</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <style>
+        /* Dimensioni iniziali della mappa */
+        
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h3>Trova il percorso</h3>
+    <!-- Questo div contiene la mappa -->
+    <div id="map"></div>
+    <script>
+        // definiamo il Point of Interest fisso verso cui andare
+        const POI = 'Castello della Zisa, Piazza Zisa, 90135 Palermo PA';
+        const poiLatLng = {
+            lat: 38.1173208,
+            lng: 13.3409609
+        };
+
+        function errorHandler(error) { // gestione errore caricamento mappa
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("dato che non hai permesso l'invio delle informazioni, non so dirti dove sei");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("non riesco a recuperare e inviare le informazioni necessarie");
+                    break;
+                case error.TIMEOUT:
+                    console.log("il server ritarda a rispondere");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log("si è verificato un errore imprevisto");
+                    break;
+            }
+
+        }
+
+        // Inizializza la mappa
+        // questa è la callback generale invocata dallo
+        // script che apre la mappa
+
+        function initMap() {
+            // oggetti usati dalla Directions API per stabilire 
+            // il percorso verso il point of interest
+
+            let directionsService = new google.maps.DirectionsService();
+            let directionsRenderer = new google.maps.DirectionsRenderer();
+
+            let request = {
+                destination: POI
+            }
+
+            // Effettua la geolocalizzazione HTML5
+
+            let myposition = { // default: approssimativamente il centro di Palermo
+                lat: 38.12,
+                lng: 13.35
+            };
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function(position) { // ottiene la posizione
+                    myposition.lat = position.coords.latitude;
+                    myposition.lng = position.coords.longitude;
+                }, errorHandler, {
+                    // oggetto opzionale PositionOptions 
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                });
+            } else {
+                console.log('Geolocalizzazione non supportata dal browser');
+            }
+
+            // completiamo l'oggetto di richiesta della rotta
+            request.origin = myposition;
+            request.travelMode = 'WALKING';
+            request.unitSystem = google.maps.UnitSystem.METRIC;
+
+
+            // crea l'oggetto Map nell'elemento HTML passato come primo argomento
+            // usa le opzioni di zoom e center per posizionare e zoomare la mappa
+            let map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 10,
+                    center: myposition
+                });
+
+            // Posizioniamo il marker nella nostra posizione
+            // e in quella della destinazione
+            let originMarker = new google.maps.Marker({
+                position: myposition,
+                map: map
+            });
+
+            let destinationMarker = new google.maps.Marker({
+                position: poiLatLng,
+                map: map
+            });
+
+            // calcoliamo la rotta
+            directionsRenderer.setMap(map);
+
+            directionsService.route(request, function(result, status) {
+                if (status == 'OK') {
+                    directionsRenderer.setDirections(result);
+                }
+            });
+
+        }
+    </script>
+    <!-- carica la API
+
+    * l'attributo async consente al browser di continuare a renderizzare la pagina
+    * mentre carica la mappa. E' necssaria la specifica della API KEY per accedere alle
+    * funzioni qui descritte
+    -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHONLiihy5zBcG-S71F1ZVCuwiiRZjKLY&callback=initMap">
+    </script>
+</body>
+
+</html>

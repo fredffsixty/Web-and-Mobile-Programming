@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <div id="clock"></div>
+    <script>
+        const ONESECOND = 1000;
+
+        function clock() {
+            document.getElementById('clock').innerHTML = new Date().toLocaleTimeString();
+        }
+
+        setInterval(clock, ONESECOND);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('partials/head') -%>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+    <% include partials/header.ejs %>
+        <% include partials/navbar.ejs %>
+            <!-- corpo centrale -->
+            <div class="container my-3">
+                <h1 class="display-4 text-success">Registrazione effettuata con successo!!</h1>
+                <br><br>
+                <a class="display-6 text-info" href="/accedi">Accedi al nostro portale</a>
+            </div>
+            <% include partials/footer.ejs %>
+</body>
+
+</html>

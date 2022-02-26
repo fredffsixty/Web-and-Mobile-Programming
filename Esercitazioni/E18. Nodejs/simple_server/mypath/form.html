@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='form.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <script>
+    </script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Esempio di Form</h1>
+
+    <form class="myform" method="POST" action="test.js">
+        <fieldset>
+            <legend>Dati anagrafici</legend>
+            <label class="mandatory" for="name">Nome *</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="name" name="name" type="text" size="40" maxlength="40" required/>
+            <br><br>
+            <label class="mandatory" for="surname">Cognome*</label>
+            <input id="surname" name="surname" type="text" size="40" maxlength="40" required/>
+
+        </fieldset>
+        <br>
+        <br>
+        <input type="submit" value="Invia" />
+    </form>
+</body>
+
+</html>

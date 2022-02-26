@@ -1,0 +1,31 @@
+    div {
+        color: darkcyan;
+        /* !important */
+    }
+    
+    a:link,
+    a:visited {
+        text-decoration: none;
+        color: brown;
+    }
+    
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: overline underline;
+        color: coral;
+    }
+    
+    div::first-line {
+        font: italic small-caps lighter 18px/1.5em Arial, Helvetica, sans-serif;
+        /*
+         * equivalente di: font-style font-variant font-weight font-size/line-height font-family
+         */
+        color: hsl(120, 11%, 45%);
+        color: rgba(128, 36, 200, 0.5);
+        color: #d46f53;
+        color: #f54;
+        /* #ff5544 */
+        color: blueviolet;
+        /* #8a2be2 predefinito */
+    }

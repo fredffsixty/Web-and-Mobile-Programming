@@ -1,0 +1,162 @@
+/* regole generali */
+
+* {
+    box-sizing: border-box;
+    font: 18px/24px Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 10px;
+    text-align: justify;
+}
+
+#container,
+header,
+nav,
+footer,
+header>figure {
+    padding: 0;
+}
+
+
+/* --- Regole di posizionamento e layout --- */
+
+
+/* layout fisso centrato con posizionamento relativo */
+
+#container {
+    margin: auto;
+    width: 768px;
+    position: relative;
+    background-color: aquamarine;
+}
+
+
+/* le barre di intestazione, menu e piè di pagina hanno altezza fissa */
+
+header {
+    height: 200px;
+}
+
+nav {
+    height: 70px;
+}
+
+footer {
+    height: 150px;
+}
+
+
+/* il logo è a sinistra dell'intestazione */
+
+header>figure {
+    float: left;
+    margin-left: 15px;
+    margin-top: 15px;
+    /* l'altezza disponibile sarà dunque 100px */
+    width: 160px;
+    /* 160 = 284*(100/177) per mantenere il rapporto d'aspetto*/
+}
+
+header>figure>img {
+    width: 100%;
+    /* 160px */
+}
+
+
+/* immagine nel corpo del testo flottante a sinistra */
+
+section>img {
+    display: block;
+    /* così posso gestire il box model */
+    float: left;
+    width: 40%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* questo margine è pari al padding della <section> così
+    i bordi dell'immagine si allineano col testo */
+    padding: 0;
+}
+
+aside {
+    float: right;
+    width: 35%;
+}
+
+section {
+    width: 65%;
+}
+
+article {
+    margin-bottom: 30px;
+}
+
+
+/* --- Regole per il testo e i colori --- */
+
+header {
+    background-color: darkslateblue;
+    color: cornsilk;
+    font-size: 2em;
+    line-height: 200px;
+    /* allineamento centrato verticalmente: l'interlinea 
+    è pari all'altezza del box */
+    text-align: center;
+}
+
+nav,
+footer {
+    background-color: aliceblue;
+    color: cornflowerblue;
+    text-align: center;
+}
+
+nav {
+    line-height: 70px;
+    border-bottom: 1px solid darkblue;
+    font-size: 1.3em;
+}
+
+footer {
+    font-size: 1.2em;
+    line-height: 150px;
+    border-top: 1px solid darkblue;
+}
+
+section {
+    background-color: lightcyan;
+    color: darkslateblue;
+    border-right: 1px solid darkblue;
+}
+
+aside {
+    color: darkcyan;
+}
+
+article>time {
+    font-style: italic;
+    color: brown;
+}
+
+article:not(:last-child) {
+    border-bottom: 1px solid brown;
+}
+
+
+/* --- Regole per i link della barra di navigazione --- */
+
+nav>a {
+    font-size: inherit;
+}
+
+nav>a:link,
+nav>a:visited {
+    text-decoration: none;
+    color: cornflowerblue;
+}
+
+nav>a:hover,
+nav>a:focus,
+nav>a:active {
+    color: darkred;
+    font-style: italic;
+    text-decoration: overline underline;
+}

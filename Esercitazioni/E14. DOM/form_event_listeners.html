@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='form.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <style>
+        /*
+         * classi di forza della password espresse 
+         * come colore di background del campo password
+         */
+        
+        .weak {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .medium {
+            background-color: rgba(255, 165, 0, 0.3);
+        }
+        
+        .strong {
+            background-color: rgba(60, 179, 113, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Esempio di Form</h1>
+
+    <form class="myform" action="#" onsubmit="return recapWindow()">
+        <fieldset>
+            <legend>Dati anagrafici</legend>
+            <label class="mandatory" for="name">Cognome e Nome *</label>
+            <input id="name" name="name" type="text" size="40" maxlength="40" required/> &nbsp;&nbsp;&nbsp;
+
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Uomo</label><br> &thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Donna</label> &Tab;
+            <br /><br />
+
+            <label class="mandatory" for="birthplace">Nato a *</label>
+            <input name="birthplace" id="birthplace" type="text" size="25" maxlength="40" required/>
+
+            <label class="mandatory" for="state">Provincia *</label>
+            <select id="state" name="state" required>
+                <option value="ag">Agrigento</option>
+                <option value="al">Alessandria</option>
+                <option value="an">Ancona</option>
+                <option value="ao">Aosta</option>
+                <option value="ar">Arezzo</option>
+                <option value="ap">Ascoli Piceno</option>
+                <option value="at">Asti</option>
+                <option value="av">Avellino</option>
+                <option value="ba">Bari</option>
+                <option value="bt">Barletta-Andria-Trani</option>
+                <option value="bl">Belluno</option>
+                <option value="bn">Benevento</option>
+                <option value="bg">Bergamo</option>
+                <option value="bi">Biella</option>
+                <option value="bo">Bologna</option>
+                <option value="bz">Bolzano</option>
+                <option value="bs">Brescia</option>
+                <option value="br">Brindisi</option>
+                <option value="ca">Cagliari</option>
+                <option value="cl">Caltanissetta</option>
+                <option value="cb">Campobasso</option>
+                <option value="ci">Carbonia-iglesias</option>
+                <option value="ce">Caserta</option>
+                <option value="ct">Catania</option>
+                <option value="cz">Catanzaro</option>
+                <option value="ch">Chieti</option>
+                <option value="co">Como</option>
+                <option value="cs">Cosenza</option>
+                <option value="cr">Cremona</option>
+                <option value="kr">Crotone</option>
+                <option value="cn">Cuneo</option>
+                <option value="en">Enna</option>
+                <option value="fm">Fermo</option>
+                <option value="fe">Ferrara</option>
+                <option value="fi">Firenze</option>
+                <option value="fg">Foggia</option>
+                <option value="fc">Forl&igrave;-Cesena</option>
+                <option value="fr">Frosinone</option>
+                <option value="ge">Genova</option>
+                <option value="go">Gorizia</option>
+                <option value="gr">Grosseto</option>
+                <option value="im">Imperia</option>
+                <option value="is">Isernia</option>
+                <option value="sp">La spezia</option>
+                <option value="aq">L'aquila</option>
+                <option value="lt">Latina</option>
+                <option value="le">Lecce</option>
+                <option value="lc">Lecco</option>
+                <option value="li">Livorno</option>
+                <option value="lo">Lodi</option>
+                <option value="lu">Lucca</option>
+                <option value="mc">Macerata</option>
+                <option value="mn">Mantova</option>
+                <option value="ms">Massa-Carrara</option>
+                <option value="mt">Matera</option>
+                <option value="vs">Medio Campidano</option>
+                <option value="me">Messina</option>
+                <option value="mi">Milano</option>
+                <option value="mo">Modena</option>
+                <option value="mb">Monza e della Brianza</option>
+                <option value="na">Napoli</option>
+                <option value="no">Novara</option>
+                <option value="nu">Nuoro</option>
+                <option value="og">Ogliastra</option>
+                <option value="ot">Olbia-Tempio</option>
+                <option value="or">Oristano</option>
+                <option value="pd">Padova</option>
+                <option value="pa">Palermo</option>
+                <option value="pr">Parma</option>
+                <option value="pv">Pavia</option>
+                <option value="pg">Perugia</option>
+                <option value="pu">Pesaro e Urbino</option>
+                <option value="pe">Pescara</option>
+                <option value="pc">Piacenza</option>
+                <option value="pi">Pisa</option>
+                <option value="pt">Pistoia</option>
+                <option value="pn">Pordenone</option>
+                <option value="pz">Potenza</option>
+                <option value="po">Prato</option>
+                <option value="rg">Ragusa</option>
+                <option value="ra">Ravenna</option>
+                <option value="rc">Reggio di Calabria</option>
+                <option value="re">Reggio nell'Emilia</option>
+                <option value="ri">Rieti</option>
+                <option value="rn">Rimini</option>
+                <option value="rm">Roma</option>
+                <option value="ro">Rovigo</option>
+                <option value="sa">Salerno</option>
+                <option value="ss">Sassari</option>
+                <option value="sv">Savona</option>
+                <option value="si">Siena</option>
+                <option value="sr">Siracusa</option>
+                <option value="so">Sondrio</option>
+                <option value="ta">Taranto</option>
+                <option value="te">Teramo</option>
+                <option value="tr">Terni</option>
+                <option value="to">Torino</option>
+                <option value="tp">Trapani</option>
+                <option value="tn">Trento</option>
+                <option value="tv">Treviso</option>
+                <option value="ts">Trieste</option>
+                <option value="ud">Udine</option>
+                <option value="va">Varese</option>
+                <option value="ve">Venezia</option>
+                <option value="vb">Verbano-Cusio-Ossola</option>
+                <option value="vc">Vercelli</option>
+                <option value="vr">Verona</option>
+                <option value="vv">Vibo valentia</option>
+                <option value="vi">Vicenza</option>
+                <option value="vt">Viterbo</option>
+            </select>
+
+            <br /><br />
+
+            <label class="mandatory" for="birthdate">Data di Nascita *</label>
+            <input name="birthdate" id="birthdate" type="date" required/>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Indirizzo</legend>
+            <label for="address">Via/Piazza</label>
+            <input name="address" id="address" type="text" size="40" maxlength="40" /> &nbsp;&nbsp;&nbsp;
+
+            <label for="addressnum">N.</label>
+            <input name="addressnum" id="addressnum" type="number" max="9999" size="4" maxlength="4" disabled />
+
+            <br><br>
+
+            <label for="city">Località</label> &nbsp;&nbsp;&nbsp;
+            <input name="city" id="city" type="text" size="15" maxlength="15" disabled />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <label for="cap">CAP.</label>
+            <input name="cap" id="cap" type="tel" pattern="^\d{5}$" placeholder="#####" title="Inserire 5 cifre da 00100 a 98168" size="5" maxlength="5" disabled />
+
+            <br /><br />
+
+            <label for="tel">Tel.</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="tel" id="tel" type="tel" placeholder="(+/00)PPLLLNNNNNNN" pattern="((((\+|00)[1-9]{2})|0)?([1-9]{2,3}))([0-9]{6,10})" title="Inserire il numero di telefono nel formato (+|00)<pref. int.><pref. loc.><numero> oppure 0<pref. loc.><numero>" size="20"
+                maxlength="20" disabled />
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Autenticazione</legend>
+            <label class="mandatory" for="email">E-mail *</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="email" id="email" type="email" size="32" maxlength="40" required/><br /><br />
+
+            <label class="mandatory" for="pass">Password *</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="pass" id="pass" type="password" title="Almeno 8 caratteri, una lettera maiuscola e un numero" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" size="32" maxlength="40" required/><br /><br />
+
+            <label class="mandatory" for="repass">Reinserisci password *</label>&nbsp;
+            <input name="repass" id="repass" type="password" size="32" maxlength="40" onchange="checkPassword(this)" required/>
+        </fieldset>
+        <br>
+        <input name="ok" id="ok" type="submit" value="Invia" formtarget="_blank" />
+    </form>
+    <script>
+        let pass = document.getElementById("pass");
+        let address = document.getElementById("address");
+
+        // espressioni regolari per la forza delle password
+        const weakPass = new RegExp("^((?=.*[a-z]).{8,}|(?=.*[a-z])(?=.*[A-Z]).{8,})$");
+        const mediumPass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$");
+        const strongPass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$");
+
+
+        address.addEventListener('focusout', function(event) {
+            inputFields = this.parentElement.getElementsByTagName('input');
+
+            if (this.value == '') {
+                for (input of inputFields)
+                    if (input != this && !input.disabled) {
+                        input.disabled = true;
+                        input.value = '';
+                    }
+            } else
+                for (input of inputFields)
+                    if (input != this && input.disabled) input.disabled = false;
+        });
+
+        // aggiungo la gestione dell'evento di pressione del tasto TAB
+        // che innesca il focusout, ma avviene prima
+        address.addEventListener('keydown', function(event) {
+            if (event.keyCode == 9) { // pressione di TAB
+
+                inputFields = this.parentElement.getElementsByTagName('input');
+
+                if (this.value == '') {
+                    for (input of inputFields)
+                        if (input != this && !input.disabled) {
+                            input.disabled = true;
+                            input.value = '';
+                        }
+                } else
+                    for (input of inputFields)
+                        if (input != this && input.disabled) input.disabled = false;
+
+            }
+        });
+
+        function checkPassword(input) {
+            if (input.value != pass.value) {
+                input.value = "";
+                input.placeholder = "Password non coincidenti!";
+                input.focus();
+            }
+        }
+
+        // gestione degli eventi per la forza della password
+        function strengthVal() {
+            // rimuove le classi di forza della password
+            // quando si reinserisce la password
+            this.classList.remove("strong", "medium", "weak");
+
+            // cancella le classi di forza
+            // quando il campo viene cancellato
+            if (this.value == "") this.classList.remove("strong", "medium", "weak");
+            // test della password con aggiunta della propria etichetta di classe
+            else if (strongPass.test(this.value))
+                this.classList.add("strong");
+            else if (mediumPass.test(this.value))
+                this.classList.add("medium");
+            else this.classList.add("weak");
+        }
+
+        // registra il gestore nell'elemento password
+        document.querySelector("[type='password']").addEventListener('input', strengthVal);
+
+        // finestra di riepilogo
+        function recapWindow() {
+            let data = new FormData(document.forms[0]);
+            let w = window.open("", "Recap", "width=600, height=600");
+
+            w.document.write(`<h1>Riepilogo dati utente: ${data.get('name')}</h1><br><br>\
+            <table>\
+                <tr><th align='left'>Genere:</th><td>${data.get('gender')=='male'?'Uomo':'Donna'}</td></tr>\
+                <tr><th align='left'>Data e luogo di nascita:</th><td>${new Date(data.get('birthdate')).toLocaleDateString()}\
+                    , ${data.get('birthplace')} (${data.get('state').toUpperCase()})</td></tr>\
+                <tr><th align='left'>Indirizzo:</th><td>${data.get('address')} n. ${data.get('addressnum')}\
+                    , ${data.get('cap')} ${data.get('city')}</td></tr>\
+                <tr><th align='left'>N. telefonico:</th><td>${data.get('tel')}</td></tr>\
+                <tr><th align='left'>Email:</th><td>${data.get('email')}</td></tr>\
+            </table>`);
+
+            // inibisce la navigazione verso la url inserita nell'attributo action della form
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

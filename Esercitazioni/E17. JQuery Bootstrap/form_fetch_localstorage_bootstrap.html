@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <style>
+        /*
+         * classi di forza della password espresse 
+         * come colore di background del campo password
+         */
+        
+        .weak {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .medium {
+            background-color: rgba(255, 165, 0, 0.3);
+        }
+        
+        .strong {
+            background-color: rgba(60, 179, 113, 0.3);
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- Include le icone fontawesome -->
+    <script src="https://kit.fontawesome.com/4c3d961aed.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Intestazione con carousel -->
+    <div class="container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide carousel-fade d-none d-sm-block" data-ride="carousel" data-pause="false" data-interval="2000">
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/la.jpg" class="w-100" alt="Los Angeles">
+                        <div class="carousel-caption">
+                            <h1>My First Bootstrap 4 Page</h1>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/chicago.jpg" class="w-100" alt="Chicago">
+                        <div class="carousel-caption">
+                            <h1>My First Bootstrap 4 Page</h1>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/ny.jpg" class="w-100" alt="New York">
+                        <div class="carousel-caption">
+                            <h1>My First Bootstrap 4 Page</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-block d-sm-none bg-info text-white text-center w-100">
+                <h5 style="height: 200px; line-height: 200px;">My First Bootstrap 4 Page</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- barra di navigazione -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- corpo centrale -->
+    <div class="container my-3">
+        <div class="row">
+            <div class="container mt-3 d-block d-md-none">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link text-info" data-toggle="collapse" href="#collapseOne">
+                            Post recenti
+                        </a>
+                        </div>
+                        <div id="collapseOne" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="media border p-1">
+                                    <img src="images/img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:40px;">
+                                    <div class="media-body">
+                                        <h5>John Doe <small><i>Posted on February 19, 2016</i></small></h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        <div class="media p-1">
+                                            <img src="images/img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:30px;">
+                                            <div class="media-body">
+                                                <h5>Jane Doe <small><i>Posted on February 20 2016</i></small></h5>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="container was-validated col-sm-8 mt-3" action="#">
+                <p class="lead text-uppercase">Dati anagrafici</p>
+
+                <div class="form-group">
+                    <label for="name">Cognome e Nome *</label>
+                    <input id="name" name="name" type="text" class="form-control" maxlength="40" required/>
+                    <div class="invalid-feedback">
+                        Inserire nome e cognome
+                    </div>
+                </div>
+
+                <div class="custom-control custom-radio custom-control-inline mt-2">
+                    <input type="radio" class="custom-control-input" id="male" name="gender" value="male" required>
+                    <label class="custom-control-label" for="male">Uomo</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline mt-2">
+                    <input type="radio" class="custom-control-input" id="female" name="gender" value="female" required>
+                    <label class="custom-control-label" for="female">Donna</label><br>
+                    <div class="invalid-feedback ml-2">
+                        Inserire il genere
+                    </div>
+                </div>
+
+                <p class="lead text-danger mt-4">Nato a: *</p>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Regione&nbsp;&nbsp;</span>
+                    </div>
+                    <select id="region" class="custom-select" name="region" required>
+                        <option value="" selected></option>
+                        <option value="0">Abruzzo</option>
+                        <option value="1">Basilicata</option>
+                        <option value="2">Calabria</option>
+                        <option value="3">Campania</option>
+                        <option value="4">Emilia-Romagna</option>
+                        <option value="5">Friuli-Venezia Giulia</option>
+                        <option value="6">Lazio</option>
+                        <option value="7">Liguria</option>
+                        <option value="8">Lombardia</option>
+                        <option value="9">Marche</option>
+                        <option value="10">Molise</option>
+                        <option value="11">Piemonte</option>
+                        <option value="12">Puglia</option>
+                        <option value="13">Sardegna</option>
+                        <option value="14">Sicilia</option>
+                        <option value="15">Toscana</option>
+                        <option value="16">Trentino-Alto Adige</option>
+                        <option value="17">Umbria</option>
+                        <option value="18">Valle d'Aosta</option>
+                        <option value="19">Veneto</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Selezionare la regione di nascita
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Provincia&nbsp;</span>
+                    </div>
+                    <select id="state" name="state" class="custom-select" required>
+                            <option value="" selected></option>
+                        </select>
+                    <div class="invalid-feedback">
+                        Selezionare la provincia di nascita
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Comune&nbsp;&nbsp;</span>
+                    </div>
+                    <select id="town" name="town" class="custom-select" required>
+                            <option value="" selected></option>
+                        </select>
+                    <div class="invalid-feedback">
+                        Selezionare il comune di nascita
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Data di Nascita *</label>
+                    <input name="birthdate" id="birthdate" type="date" class="form-control" required/>
+                    <div class="invalid-feedback">
+                        Selezionare la data di nascita
+                    </div>
+                </div>
+
+                <p class="lead text-uppercase mt-3">Indirizzo</p>
+                <div class="form-row">
+                    <div class="col-6">
+                        <label for="address">Via/Piazza</label>
+                        <input name="address" id="address" type="text" pattern="\w+" class="form-control" maxlength="40" />
+                    </div>
+                    <div class="col-3">
+                        <label for="addressnum">N.</label>
+                        <input name="addressnum" id="addressnum" type="number" class="form-control" min="1" max="9999" size="4" maxlength="4" disabled />
+                        <div class="invalid-feedback">
+                            1 - 9999
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <label for="cap">CAP.</label>
+                        <input name="cap" id="cap" type="tel" class="form-control" pattern="^\d{5}$" placeholder="#####" title="Inserire 5 cifre da 00100 a 98168" size="5" maxlength="5" disabled />
+                        <div class="invalid-feedback">
+                            00010 - 98168
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="city">Località</label>
+                        <input name="city" id="city" type="text" class="form-control" maxlength="15" disabled />
+                        <div class="invalid-feedback">
+                            Nome località
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="tel">Tel.</label>
+                        <input name="tel" id="tel" type="tel" class="form-control" placeholder="(+/00)PPLLLNNNNNNN" pattern="((((\+|00)[1-9]{2})|0)?([1-9]{2,3}))([0-9]{6,10})" title="Inserire il numero di telefono nel formato (+|00)<pref. int.><pref. loc.><numero> oppure 0<pref. loc.><numero>"
+                            size="20" maxlength="20" disabled />
+                        <div class="invalid-feedback">
+                            ((+ / 00)(pref. int.) / 0)(pref. loc)(numero)
+                        </div>
+                    </div>
+                </div>
+
+                <p class="lead text-uppercase mt-3">Autenticazione</p>
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input name="email" id="email" type="email" class="form-control" size="32" maxlength="40" required/>
+                    <div class="invalid-feedback">
+                        Inserire indirizzo e-mail
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pass">Password *</label>
+                    <input name="pass" id="pass" type="password" class="form-control" title="Almeno 8 caratteri, una lettera maiuscola e un numero" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" size="32" maxlength="40" required/>
+                    <div class="invalid-feedback">
+                        Almeno 8 caratteri di cui uno maiusciolo e un numero
+                    </div>
+                    <div class="valid-feedback text-warning">
+                        Password media
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="repass">Reinserisci password *</label>
+                    <input name="repass" id="repass" type="password" class="form-control" size="32" maxlength="40" required/>
+                    <div class="invalid-feedback">
+                        Le password devono coincidere
+                    </div>
+                </div>
+                <button name="ok" id="ok" type="submit" class="btn btn-primary mt-3" formtarget="_blank">Invia</button>
+            </form>
+            <div class="container mt-3 d-none d-md-block col-sm-4">
+                <h3>Post recenti</h3>
+                <div class="media border p-1">
+                    <img src="images/img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:40px;">
+                    <div class="media-body">
+                        <h5>John Doe <small><i>Posted on February 19, 2016</i></small></h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="media p-1">
+                            <img src="images/img_avatar2.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:30px;">
+                            <div class="media-body">
+                                <h5>Jane Doe <small><i>Posted on February 20 2016</i></small></h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Piè di pagina -->
+    <div class=" jumbotron text-left py-3 " style="margin-bottom:0 ">
+        <div class="d-flex flex-row flex-wrap justify-content-around ">
+            <div>
+                <p class="lead ">Contatti</p>
+                <p>Via delle Rose, 45</p>
+                <p>12345, Forlimpopoli</p>
+                <p><i class="fas fa-envelope "></i>
+                    <a href="mailto:pippo@topolinia.disney.com ">pippo@topolinia.disney.com</a>
+                </p>
+                <p class="lead ">Seguici su</p>
+                <p>
+                    <a href="# "><i class="fab fa-facebook-square " style="font-size: 24px;color: #3b5998 "></i></a>
+                    <a href="# "><i class="fab fa-twitter-square " style="font-size: 24px;color: #1da1f2 "></i></a>
+                    <a href="# "><i class="fab fa-instagram " style="font-size: 24px;color: #e56969 "></i></a>
+                </p>
+            </div>
+            <div>
+                <p class="lead ">I nostri partner</p>
+                <ul class="list-unstyled ">
+                    <li class="media mt-3 ">
+                        <a class="d-flex align-middle " href="# ">
+                            <img src="./images/ibm_icon_130909.png " style="width: 40px; " alt="Partner 1 ">
+                        </a>
+                        <div class="media-body ml-2 ">
+                            <h5>Partner 1</h5>
+                            <span class="text-info ">Azienda specializzata in ...</span>
+                        </div>
+                    </li>
+                    <li class="media mt-3 ">
+                        <a class="d-flex align-middle " href="# ">
+                            <img src="images/google_logo_icon.png " style="width: 40px; " alt="Partner 2 ">
+                        </a>
+                        <div class="media-body ml-2 ">
+                            <h5>Partner 2</h5>
+                            <span class="text-info ">Leader nel settore ...</span>
+                        </div>
+                    </li>
+                    <li class="media mt-3 ">
+                        <a class="d-flex align-middle " href="# ">
+                            <img src="images/intel_2120.png " style="width: 40px; " alt="Partner 3 ">
+                        </a>
+                        <div class="media-body ml-2 ">
+                            <h5>Partner 3</h5>
+                            <span class="text-info "> Azienda leader ...</span>
+                        </div>
+                    </li>
+                </ul>
+                <p class="font-italic " style="font-size: 1.1rem ">&copy; Roberto Pirrone</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            const strongPass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}");
+
+            let province = null;
+
+            let db = {}; // oggetto database che sarà popolato dopo la richiesta AJAX
+
+            // chiamata per caricare il file del database di regioni, province e comuni
+            $.ajax({
+                // oggetto con le impostazioni della richiesta
+                // $.ajax() restituisce un oggetto jqXHR che implementa l'interfaccia di Promise
+                url: './regioni_province_comuni.json',
+                dataType: 'json',
+                type: 'GET',
+                // imponiamo che la risposta sia JSON
+                beforeSend: function(xhr) {
+                    xhr.overrideMimeType('application/json');
+                },
+                // success funzione da chiamare in caso di successo
+                // ovvero si può usare .done(callback(data){...}) come metodo
+                // di jqXHR che funziona come then()
+                success: function(result, status, xhr) {
+                    console.log(`Status: ${status} ${xhr.statusText}`);
+                    console.log(`retrieved file: ${xhr.responseURL}`);
+                    console.log(`type: ${xhr.getResponseHeader('Content-Type')}`);
+                    localStorage.setItem('regionData', JSON.stringify(xhr.responseJSON));
+                    db = JSON.parse(localStorage.getItem('regionData'));
+                }
+            }).fail(function(error) {
+                // sempre secondo la logica di Promise
+                // in alternativa l'oggetto che configura $.ajax() accetta
+                // un campo error che è la callback da chiamare in caso di errore
+                console.log(error.message);
+            });
+
+            $('#address').focusout(function(ev) {
+                if ($(this).val() != '') {
+                    $('.form-row input').not('#address').removeAttr('disabled');
+                    $('.form-row input').not('#address').attr('required', 'required');
+                } else {
+                    $('.form-row input').not('#address').attr('disabled', 'disabled');
+                    $('.form-row input').not('#address').removeAttr('required');
+                }
+            }).keydown(function(ev) {
+                if (ev.keyCode == 9) { // pressione TAB
+                    if ($(this).val() != '') {
+                        $('.form-row input').not('#address').removeAttr('disabled');
+                        $('.form-row input').not('#address').attr('required', 'required');
+                    } else {
+                        $('.form-row input').not('#address').attr('disabled', 'disabled');
+                        $('.form-row input').not('#address').removeAttr('required');
+                    }
+                }
+            });
+
+            $('#repass').change(function(ev) {
+                if ($(this).val() != $('#pass').val()) {
+                    $(this).val('').attr('placeholder', 'Password non coincidenti!').focus();
+                }
+            });
+
+            $('#pass').on('input', function(ev) {
+
+                if (strongPass.test($(this).val()))
+                    $(this).siblings('.valid-feedback').removeClass('text-warning').text('Password forte');
+                else
+                    $(this).siblings('.valid-feedback').addClass('text-warning').text('Password media');
+            });
+
+            $('#region').change(function(ev) {
+                // rimozione dei precedenti elementi del menu Provincia e Comune
+
+                $('#state').html('<option value="" selected></option>');
+                $('#town').html('<option value="" selected></option>');
+
+                if ($(this).val() != '') {
+                    province = db.regioni[Number.parseInt($(this).val())].province;
+
+                    for (let provincia of province) {
+                        $(document.createElement('option')).
+                        val(provincia.code).
+                        text(provincia.nome).
+                        appendTo('#state');
+                    }
+
+                }
+            });
+
+            $('#state').change(function(ev) {
+                // rimozione dei precedenti elementi del menu Comune
+
+                $('#town').html('<option value="" selected></option>');
+
+                if ($(this).val() != '') {
+
+                    for (let provincia of province) {
+                        if (provincia.code == $('#state').val()) {
+                            for (let comune of provincia.comuni) {
+
+                                $(document.createElement('option')).
+                                val(comune.cap).
+                                text(comune.nome).
+                                appendTo('#town');
+                            }
+                            break; // non dobbiamo cercare oltre
+                        }
+                    }
+                }
+            });
+
+            $('form').submit(function(ev) {
+
+                // finestra di riepilogo
+                //function recapWindow() {
+                let data = new FormData($this);
+                let w = window.open(" ", "Recap ", "width=600, height=600 ");
+
+                $(w.document.body).html(`<h1>Riepilogo dati utente: ${data.get('name')}</h1><br><br>\
+            <table>\
+                <tr><th align='left'>Genere:</th><td>${data.get('gender')=='male'?'Uomo':'Donna'}</td></tr>\
+                <tr><th align='left'>Data e luogo di nascita:</th><td>${new Date(data.get('birthdate')).toLocaleDateString()}\
+                    , ${data.get('town')} (${data.get('state').toUpperCase()}) - ${data.get('region')}</td></tr>\
+                <tr><th align='left'>Indirizzo:</th><td>${data.get('address')} n. ${data.get('addressnum')}\
+                    , ${data.get('cap')} ${data.get('city')}</td></tr>\
+                <tr><th align='left'>N. telefonico:</th><td>${data.get('tel')}</td></tr>\
+                <tr><th align='left'>Email:</th><td>${data.get('email')}</td></tr>\
+            </table>`);
+
+                // inibisce la navigazione verso la url inserita nell'attributo action della form
+                return false;
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

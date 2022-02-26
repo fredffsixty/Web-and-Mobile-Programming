@@ -1,0 +1,9 @@
+<email>
+  <to>Jodie@msn.com</to>
+  <from>Bill@msn.com</from>
+  <cc>Philip@msn.com</cc>
+  <subject>My first DTD</subject>
+  <body>Hello, World</body>
+  <signature>Bill</signature>
+  <signature>Ginny</signature>
+</email>

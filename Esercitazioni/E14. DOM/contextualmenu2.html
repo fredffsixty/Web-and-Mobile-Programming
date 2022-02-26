@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Esempi di menu contestuale</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='keywords' content='...'>
+    <meta name='description' content='...'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='stilemenu.css'>
+    <link rel='icon' sizes='32x32 64x64' href='images/favicon.ico'>
+
+    <script src="contextmenu.js"></script>
+
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // definiamo la struttura del menu con un oggetto le cui chiavi
+        // solo le voci del menu i cui valori sono le URL verso cui navigare
+        const menu = {
+            'Yahoo': 'http://yahoo.com',
+            'MSN': 'http://msn.it',
+            'Gmail': 'http://mail.google.com',
+            'Altro': {
+                'inPlace': 'http://www.unipa.it',
+                'CNR': 'http://www.cnr.it',
+                'Polimi': 'http://www.polimi.it',
+                'Bologna': 'http://www.unibo.it'
+            },
+            'Google': 'http://www.google.it'
+        };
+
+        // Creiamo il menu
+        let contextMenu = createContextMenu(menu);
+
+        // Registriamo gli eventi di window per il menu appena creato
+        registerMenu(contextMenu);
+    </script>
+</body>
+
+</html>

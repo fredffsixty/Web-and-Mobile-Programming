@@ -1,0 +1,70 @@
+/* regole generali per tutta la tabella
+da sovrascrivere per i singoli elementi.
+L'uso di .mytable in tutte le proprietà
+contiene l'applicazione dello stile 
+solamente alla tabella di classe .mytable*/
+
+.mytable {
+    box-sizing: border-box;
+    font: 1.2em/1.5em Helvetica, Arial, sans-serif;
+    border: 2px solid darkblue;
+    border-collapse: collapse;
+    /* i bordi delle celle collassano senza spaziature tra di loro */
+}
+
+
+/* regole per la legenda */
+
+.mytable caption {
+    font-style: italic;
+    font-size: larger;
+}
+
+
+/* padding interno delle celle */
+
+.mytable th,
+.mytable td {
+    padding: 5px;
+}
+
+
+/* tutte le celle hanno contenuto dentrato di default */
+
+.mytable td {
+    text-align: center;
+}
+
+
+/* comportamento delle celle nella prima colonna */
+
+.mytable tr>td:first-child {
+    text-align: left;
+    font-style: italic;
+}
+
+
+/* stile intestazioni e piè di pagina */
+
+.mytable thead {
+    background-color: aqua;
+    border-bottom: 1px solid lightblue;
+}
+
+.mytable tbody>tr:first-child,
+.mytable tfoot {
+    background-color: azure;
+    border-bottom: 1px solid lightblue;
+}
+
+.mytable tfoot {
+    border-bottom: none;
+    border-top: 1px solid lightblue;
+}
+
+
+/* colorazione alternata delle righe dei dati */
+
+.mytable tbody tr:nth-child(even)>td:not(:first-child) {
+    background-color: lightgray;
+}

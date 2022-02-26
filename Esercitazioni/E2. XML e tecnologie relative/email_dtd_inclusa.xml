@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?xml-stylesheet type="text/xsl" href="mystyle.xsl"?>
+<!DOCTYPE email SYSTEM "email.dtd" >
+
+<!--
+ <!DOCTYPE email [
+  <!ELEMENT email (to+, from, cc*, subject?, body, signature*)>
+  <!ELEMENT to (#PCDATA)>
+  <!ELEMENT from (#PCDATA)>
+  <!ELEMENT cc (#PCDATA)>
+  <!ELEMENT subject (#PCDATA)>
+  <!ELEMENT body (#PCDATA)>
+  <!ELEMENT signature (#PCDATA)>
+ ]>
+-->
+ <email>
+  <to>Jodie@msn.com</to>
+  <from>Bill@msn.com</from>
+  <cc>Philip@msn.com</cc>
+  <subject>My first DTD</subject>
+  <body>Hello, World</body>
+  <signature>Bill</signature>
+  <signature>Ginny</signature>
+</email>

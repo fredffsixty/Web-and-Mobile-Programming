@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>PUso di JQuery</title>
+    <meta name="description" content="">
+    <meta name="author" content="Roberto Pirrone">
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+    <link rel="shortcut icon" sizes="32x32 64x64" href="images/favicon.ico">
+    <style>
+        div#propagate {
+            box-sizing: border-box;
+            width: 500px;
+            height: 200px;
+        }
+        
+        .clicked {
+            border: 2px solid maroon;
+        }
+        
+        .unclicked {
+            border: 1px dotted darkcyan;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="change darkslateblue palegoldenrod yellow">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec ex quis massa tempus bibendum vel vel ipsum. Ut aliquam nec massa ac congue. Fusce et placerat massa. Donec accumsan massa eu interdum consequat. Vestibulum id sem eu velit tempor placerat
+        non vel tortor. Aliquam erat volutpat. Nullam ac nunc ac ante sollicitudin vehicula vel sit amet arcu. Suspendisse potenti. Curabitur et mattis nulla. Aliquam fermentum a eros a blandit. Donec elementum sagittis porta. Pellentesque quis auctor
+        quam. Fusce magna sem, maximus non ante ut, accumsan dignissim augue. Morbi tincidunt egestas lacus, ut blandit dolor euismod eget. Pellentesque a efficitur sapien.
+    </div>
+    <br>
+    <div class="change red blue">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec ex quis massa tempus bibendum vel vel ipsum. Ut aliquam nec massa ac congue. Fusce et placerat massa. Donec accumsan massa eu interdum consequat. Vestibulum id sem eu velit tempor placerat
+        non vel tortor. Aliquam erat volutpat. Nullam ac nunc ac ante sollicitudin vehicula vel sit amet arcu. Suspendisse potenti. Curabitur et mattis nulla. Aliquam fermentum a eros a blandit. Donec elementum sagittis porta. Pellentesque quis auctor
+        quam. Fusce magna sem, maximus non ante ut, accumsan dignissim augue. Morbi tincidunt egestas lacus, ut blandit dolor euismod eget. Pellentesque a efficitur sapien.
+    </div>
+    <br>
+    <p class="change darkgrey lightgreen">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec ex quis massa tempus bibendum vel vel ipsum. Ut aliquam nec massa ac congue. Fusce et placerat massa. Donec accumsan massa eu interdum consequat. Vestibulum id sem eu velit tempor placerat
+        non vel tortor. Aliquam erat volutpat. Nullam ac nunc ac ante sollicitudin vehicula vel sit amet arcu. Suspendisse potenti. Curabitur et mattis nulla. Aliquam fermentum a eros a blandit. Donec elementum sagittis porta. Pellentesque quis auctor
+        quam. Fusce magna sem, maximus non ante ut, accumsan dignissim augue. Morbi tincidunt egestas lacus, ut blandit dolor euismod eget. Pellentesque a efficitur sapien.
+    </p>
+    <br>
+    <div id="propagate" class="unclicked">
+        <input type="button" value="Click me!">
+    </div>
+    <script>
+        function changeColor(e) {
+            let colors = this.className.split(' ');
+
+            switch (e.type) {
+                case 'mouseover':
+                    this.style.color = colors[1];
+                    break;
+                case 'mouseout':
+                    this.style.color = colors[2];
+                    break;
+                case 'click':
+                    this.style.color = colors[3] ? colors[3] : 'inherit';
+            }
+        }
+
+        $(document).ready(function() {
+            // selezioniamo tutti i paragrafi/div con classe change
+            // e applichiamo a tutti i tre gestori degli eventi
+
+            $("div[class^='change'],p[class^='change']").click(changeColor).
+            mouseout(changeColor).mouseover(changeColor);
+
+            // uso $(this) per accedere al contesto come oggetto JQuery
+            $('#propagate').click(function(e) {
+
+                $(this).removeClass('unclicked').addClass('clicked');
+            }).mouseout(function(e) {
+
+                $(this).removeClass('clicked').addClass('unclicked');
+            });
+
+            $('div#propagate > input[type="button"]').click(function(event) {
+                this.value = 'You clicked me!';
+                event.stopPropagation();
+            }).mouseout(function(event) {
+                this.value = 'Click me again!';
+                event.stopPropagation();
+            });
+
+            // il metodo css() consente di specificare un insieme di
+            // proprietà stilistiche come un oggetto, ovvero di ottenerne
+            // il valore come 'proprietà calcolate' e non come valore della
+            // proprietà style
+
+            // l'uso di $() attorno alla direttiva createElement
+            // consente di accedere all'elemento creato come oggetto JQuery
+            let msg = $(document.createElement('p')).
+            attr('id', 'nomenu'). // aggiungiamo l'attributo id='nomenu'
+            css({
+                'position': 'absolute',
+                'font': 'italic 1.2em Verdana, Arial, sans-serif',
+                'border': '1px dotted black'
+            }).text('No contextual menu in this page!'); // inseriamo il contenuto del messaggio*/
+
+            $(window).contextmenu(function(event) {
+                msg.css({
+                    'top': event.clientY + 'px', // la posizione si desume da quella
+                    'left': event.clientX + 'px' // del puntatore
+                }).appendTo('body');
+
+                event.preventDefault(); // blocchiamo il comportamento di default
+            }).
+            click(function(event) {
+                if (event.button != 2 && $('#nomenu').length) // length è >=1 se l'elemento esiste
+                    $('#nomenu').remove();
+            });
+        });
+    </script>
+</body>
+
+</html>

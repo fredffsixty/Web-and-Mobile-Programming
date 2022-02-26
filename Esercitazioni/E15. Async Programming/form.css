@@ -1,0 +1,27 @@
+* {
+    font: 1em/1.2em Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.myform {
+    box-sizing: border-box;
+    width: 650px;
+    margin: auto;
+    border: 1px dotted black;
+    padding: 15px;
+}
+
+.myform .mandatory {
+    color: brown;
+}
+
+.myform legend {
+    font-variant: small-caps;
+    font-style: italic;
+    font-size: 1.1em;
+}

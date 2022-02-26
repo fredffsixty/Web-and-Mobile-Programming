@@ -1,0 +1,27 @@
+var m = new Matrix(n) // matrice quadrata di ordine n riempita di 0
+var m = new Matrix(n,m) // matrice rettangolare (n,m) riempita di 0
+var m = new Matrix(n,'ones') // matrice quadrata di ordine n riempita di 1
+var m = new Matrix(n,m,'ones') // matrice rettangolare (n,m) riempita di 1
+var m = new Matrix(n,'identity') // matrice identità di ordine n
+var m = new Matrix(n,data) // matrice quadrata di ordine n riempita con il vettore data
+var m = new Matrix(n,m,data) // matrice rettangolare (n,m) riempita di con il vettore data
+var m = new Matrix(matrice) // matrice clonata da un'altra matrice
+
+c=a.sum(b) --> c=a+b
+c=a.sub(b) --> c=a-b
+c=a.mult(b) --> c=a*b riga x colonna
+a.transpose() --> aT
+a.reshape(h,k) --> la matrice diviene di dimensioni (h,k) 
+                    con controllo che h*k >= m*n e padding eventuale con 0
+a.inverse() --> a^-1 concontrollo che sia quadrata
+d = a.det() --> calcolo del determinante per matrici quadrate
+
+a.get(x,y) --> restituisce a(x,y)
+a.set(x,y,v) --> a(x,y)=v
+
+toString() --> "[ x, x, x,
+                 x, x, x ]"
+
+iteratore custom che chiama next() --> [x,y,v]
+
+Ereditiamo SymmetricMatrix da Matrix.

@@ -1,0 +1,123 @@
+    /* regole generali */
+    
+    * {
+        box-sizing: border-box;
+        font: 8pt/12pt Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 10pt;
+        text-align: justify;
+        color: black;
+        background-color: white;
+    }
+    
+    #container,
+    header,
+    nav,
+    footer,
+    header>figure {
+        padding: 0;
+    }
+    /* --- Regole di posizionamento e layout --- */
+    /* layout liquido centrato con posizionamento relativo */
+    
+    body {
+        margin: auto;
+        padding: 0;
+        width: 100%;
+    }
+    
+    #container {
+        margin: auto;
+        width: 100%;
+        position: relative;
+    }
+    /* le barre di intestazione, menu e piè di pagina hanno altezza fissa */
+    
+    header {
+        height: 40pt;
+        line-height: 40pt;
+        text-align: center;
+        font-size: 2em;
+    }
+    
+    nav {
+        display: none;
+    }
+    
+    footer {
+        height: 30pt;
+        line-height: 30pt;
+        text-align: center;
+        font-size: 1.3em;
+    }
+    /* il logo è a sinistra dell'intestazione */
+    
+    header>figure {
+        float: left;
+        margin-left: 10pt;
+        margin-top: 10pt;
+        width: 35pt;
+        height: 20pt;
+    }
+    
+    header>figure>img {
+        display: none;
+    }
+    /* immagine nel corpo del testo flottante a sinistra */
+    
+    section>img {
+        display: block;
+        /* così posso gestire il box model */
+        float: left;
+        width: 40%;
+        margin-right: 10pt;
+        margin-bottom: 10pt;
+        /* questo margine è pari al padding della <section> così
+    i bordi dell'immagine si allineano col testo */
+        padding: 0;
+    }
+    
+    aside {
+        float: right;
+        width: 35%;
+    }
+    
+    section {
+        width: 65%;
+    }
+    
+    article {
+        margin-bottom: 18pt;
+    }
+    /* --- regole per i bordi --- */
+    
+    header>figure {
+        border: 1pt dotted black;
+    }
+    
+    section>img {
+        filter: grayscale(100%);
+        /* immagine in b/n */
+    }
+    
+    header,
+    nav {
+        border-bottom: 1pt dotted black;
+    }
+    
+    footer {
+        border-top: 1pt dotted black;
+    }
+    
+    section {
+        border-right: 1pt solid black;
+    }
+    
+    article>time {
+        font-style: italic;
+        font-weight: bold;
+    }
+    
+    article:not(:last-child) {
+        border-bottom: 1pt solid black;
+    }

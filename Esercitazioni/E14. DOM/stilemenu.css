@@ -1,0 +1,87 @@
+/* --- Regole generali --- */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* --- Regole per il menu principale e dropdown --- */
+
+.contextmenu,
+.contextmenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    width: 160px;
+    box-shadow: 5px 5px 10px darkcyan;
+    border: 1px solid blue;
+}
+
+
+/*.contextmenu {
+    display: none;
+    position: absolute;
+    width: 160px;
+    box-shadow: 5px 5px 10px darkcyan;
+    border: 1px solid blue;
+}*/
+
+.contextmenu li {
+    height: 40px;
+    padding: 0;
+    border-bottom: 1px solid blue;
+}
+
+.contextmenu li:last-child {
+    height: 39px;
+    border-bottom: none;
+}
+
+.contextmenu a {
+    display: block;
+    text-align: center;
+    line-height: 39px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    height: 39px;
+}
+
+.contextmenu a:link,
+.contextmenu a:visited {
+    background-color: #eef;
+    color: #337;
+    text-decoration: none;
+}
+
+.contextmenu a:hover,
+.contextmenu a:focus,
+.contextmenu a:active {
+    background-color: #efe;
+    color: #bb0;
+    text-decoration: overline underline;
+}
+
+
+/* --- Regole specifiche per dropdown --- */
+
+.contextmenu .submenu {
+    position: relative;
+}
+
+.contextmenu ul {
+    top: -1px;
+    /* il sottomenu è contenuto nel tasto e quindi sta
+    sotto il bordo di quest'ultimo: bisogna tirarlo su di 1px
+    per ottenere l'allineamento dei bordi */
+    left: 158px;
+    /* si calcolano due pixel in meno a sinistra per ridisegnare il bordo
+    del sottomenu in modo che possa fuoriuscire allineato dal bordo del menu principale */
+}
+
+.contextmenu .submenu:hover ul,
+.contextmenu .submenu:focus ul,
+.contextmenu .submenu:active ul {
+    display: block;
+}
