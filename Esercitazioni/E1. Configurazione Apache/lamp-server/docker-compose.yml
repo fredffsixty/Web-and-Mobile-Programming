@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+    php-httpd:
+        image: php:7.4.28-apache
+        networks:
+            local_network:
+                ipv4_address: 172.16.238.10
+        ports:
+            - 8080:80
+        volumes:
+            - "./www:/var/www/html"
+            - "./vhosts:/etc/apache2/sites-enabled"
+    
+    mariadb:
+        image: mariadb:10.5.15
+        networks:
+            local_network:
+                ipv4_address: 172.16.238.11
+        volumes:
+            - mariadb-volume:/var/lib/mysql
+        environment:
+            TZ: "Europe/Rome"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "rootpwd"
+            MYSQL_USER: 'dockerdb'
+            MYSQL_PASSWORD: 'dockerpass'
+            MYSQL_DATABASE: 'myapp_db'
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        networks:
+            local_network:
+                ipv4_address: 172.16.238.12
+        links:
+            - 'mariadb:db'
+        ports:
+            - 8081:80
+
+volumes:
+    mariadb-volume:
+
+networks:
+    local_network:
+        ipam:
+            driver: default
+            config:
+                - subnet:  172.16.238.0/24
+                  gateway: 172.16.238.1
