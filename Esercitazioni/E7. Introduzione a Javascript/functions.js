@@ -33,7 +33,7 @@ var normal = gaussian(0, 1);
 // Ricorsione
 function fibonacci(num) {
 
-    if (num = 1) {
+    if (num == 1) {
 
         return 1;
 

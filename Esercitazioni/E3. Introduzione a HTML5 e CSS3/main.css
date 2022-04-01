@@ -29,3 +29,12 @@
         color: blueviolet;
         /* #8a2be2 predefinito */
     }
+    
+    div::first-letter {
+        font: bold 24px;
+        color: red;
+    }
+    
+    div#pippo {
+        color: green;
+    }
