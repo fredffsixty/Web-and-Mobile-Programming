@@ -66,6 +66,7 @@
 .menu ul {
     display: none;
     position: absolute;
+    /*left: 159px;*/
     left: 158px;
     /* si calcola due pixel in meno a sinistra per ottenere
     la sovrapposizione dei bordi in modo che un sottomenu che 
@@ -74,6 +75,7 @@
     /* il sottomenu è contenuto nel tasto e quindi sta
     sotto il bordo di quest'ultimo: bisogna tirarlo su di 1px
     per ottenere l'allineamento dei bordi */
+    /*border-left: none;*/
 }
 
 .menu .submenu:hover ul,

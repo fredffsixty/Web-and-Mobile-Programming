@@ -195,7 +195,7 @@
         let state = document.getElementById("state");
         let town = document.getElementById("town");
 
-        let db = JSON.parse(localStorage.getItem('regionData'));
+        let db = null;
         let province = null;
 
         let formdata = new FormData(document.forms[0]);
@@ -293,6 +293,9 @@
             // rimozione dei precedenti elementi del menu Provincia e Comune
             state.innerHTML = '<option value="-1" selected></option>';
             town.innerHTML = '<option value="-1" selected></option>';
+
+            if (db == null)
+                db = JSON.parse(localStorage.getItem('regionData'));
 
             if (this.value != '-1') {
                 province = db.regioni[Number.parseInt(this.value)].province;

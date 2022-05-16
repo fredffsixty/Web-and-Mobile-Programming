@@ -1,13 +1,21 @@
 // richiesta di un modulo installato globalmente
 // che non inizia con ./ o ../
 const { readFileSync } = require('fs');
+const { parse, join } = require('path')
+const { chdir, cwd } = require('process')
 
 myrequire.cache = Object.create(null);
 
 function myrequire(name) {
+
+    let parsed = parse(name);
+    //chdir(join(cwd(), parsed.dir))
+    chdir(parsed.dir)
+    name = parsed.name
+
     if (!(name in myrequire.cache)) {
         let code = '';
-        code = readFileSync(name);
+        code = readFileSync(name + '.js');
         /*            (err, stream) => {
                         if (err) throw err;
                         code = stream;
@@ -20,6 +28,6 @@ function myrequire(name) {
     return myrequire.cache[name].exports;
 }
 
-const { fd } = myrequire('./CommonJS/format-date.js');
+const { formatDate } = myrequire('./CommonJS/format-date');
 
-fd(new Date(), 'Do')
+console.log(formatDate(new Date(), 'Do'))
