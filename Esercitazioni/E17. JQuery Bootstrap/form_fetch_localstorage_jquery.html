@@ -54,7 +54,8 @@
 <body>
     <h1>Esempio di Form</h1>
 
-    <form class="myform" action="#" onsubmit="return recapWindow()">
+    <form class="myform" action="#">
+        <!-- non c'è l'attributo onsubmit poiché l'evento è gestito in JQuery -->
         <fieldset>
             <legend>Dati anagrafici</legend>
             <label class="mandatory" for="name">Cognome e Nome *</label>
@@ -145,7 +146,7 @@
             <input name="pass" id="pass" type="password" title="Almeno 8 caratteri, una lettera maiuscola e un numero" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" size="32" maxlength="40" required/><br /><br />
 
             <label class="mandatory" for="repass">Reinserisci password *</label>&nbsp;
-            <input name="repass" id="repass" type="password" size="32" maxlength="40" onchange="checkPassword(this)" required/>
+            <input name="repass" id="repass" type="password" size="32" maxlength="40" required/>
         </fieldset>
         <br>
         <input name="ok" id="ok" type="submit" value="Invia" formtarget="_blank" />
@@ -153,7 +154,7 @@
 
     <script>
         $(document).ready(function() {
-            const db = JSON.parse(localStorage.getItem('regionData'));
+            let db = null;
 
             const weakPass = new RegExp("^((?=.*[a-z]).{8,}|(?=.*[a-z])(?=.*[A-Z]).{8,})$");
             const mediumPass = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$");
@@ -194,6 +195,8 @@
             });
 
             $('#region').change(function(ev) {
+                db = JSON.parse(localStorage.getItem('regionData'));
+
                 // rimozione dei precedenti elementi del menu Provincia e Comune
 
                 $('#state').html('<option value="-1" selected></option>');
@@ -234,9 +237,9 @@
                 }
             });
 
-            // finestra di riepilogo
-            function recapWindow() {
-                let data = new FormData(document.forms[0]);
+            // finestra di riepilogo generata all'evento di submit
+            $('.myform').submit(function(ev) {
+                let data = new FormData(this); // a form di riferimento è l'oggetto corrente
                 let w = window.open("", "Recap", "width=600, height=600");
 
                 $(w.document.body).html(`<h1>Riepilogo dati utente: ${data.get('name')}</h1><br><br>\
@@ -252,7 +255,7 @@
 
                 // inibisce la navigazione verso la url inserita nell'attributo action della form
                 return false;
-            }
+            });
         });
     </script>
 
