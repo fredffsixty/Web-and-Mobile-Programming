@@ -129,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <form class="container was-validated col-sm-8 mt-3" action="#">
+            <form class="container needs-validation col-sm-8 mt-3" action="" novalidate>
                 <p class="lead text-uppercase">Dati anagrafici</p>
 
                 <div class="form-group">
@@ -222,7 +222,7 @@
                 <div class="form-row">
                     <div class="col-6">
                         <label for="address">Via/Piazza</label>
-                        <input name="address" id="address" type="text" pattern="\w+" class="form-control" maxlength="40" />
+                        <input name="address" id="address" type="text" pattern='^\w(?=.*[\w|\s])(?!.*[\\\-\^_$£%&@#+!;:.,"]).+$' class="form-control" maxlength="40" />
                     </div>
                     <div class="col-3">
                         <label for="addressnum">N.</label>
@@ -472,12 +472,14 @@
 
             $('form').submit(function(ev) {
 
-                // finestra di riepilogo
-                //function recapWindow() {
-                let data = new FormData($this);
-                let w = window.open(" ", "Recap ", "width=600, height=600 ");
+                if (this.checkValidity() === false) {
+                    $(this).removeClass('needs-validation').addClass('was-validated');
+                } else {
+                    // finestra di riepilogo
+                    let data = new FormData(this);
+                    let w = window.open(" ", "Recap ", "width=600, height=600 ");
 
-                $(w.document.body).html(`<h1>Riepilogo dati utente: ${data.get('name')}</h1><br><br>\
+                    $(w.document.body).html(`<h1>Riepilogo dati utente: ${data.get('name')}</h1><br><br>\
             <table>\
                 <tr><th align='left'>Genere:</th><td>${data.get('gender')=='male'?'Uomo':'Donna'}</td></tr>\
                 <tr><th align='left'>Data e luogo di nascita:</th><td>${new Date(data.get('birthdate')).toLocaleDateString()}\
@@ -487,8 +489,12 @@
                 <tr><th align='left'>N. telefonico:</th><td>${data.get('tel')}</td></tr>\
                 <tr><th align='left'>Email:</th><td>${data.get('email')}</td></tr>\
             </table>`);
+                }
 
                 // inibisce la navigazione verso la url inserita nell'attributo action della form
+                ev.preventDefault()
+                ev.stopPropagation()
+
                 return false;
             });
 
