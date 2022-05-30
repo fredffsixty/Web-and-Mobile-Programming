@@ -24,7 +24,20 @@
 
             let tID = 0
 
-            function animatePorgressBar(progress, tID) {
+            totalProgress = 0
+
+            function progressCallback() {
+                // Questa è la callback che simula il processo
+                // da monitorare, dal quale calcoliamo una percentuale
+                // di completamento
+                prog = totalProgress;
+                totalProgress += 1;
+                return prog;
+            }
+
+            function animatePorgressBar(progressFun, tID) {
+
+                progress = progressFun.call()
 
                 $('.progress-bar').css({
                     'width': `${progress}%`
@@ -33,9 +46,9 @@
                 if (progress == 100)
                     clearTimeout(tID)
                 else
-                    tID = setTimeout(animatePorgressBar, 1000, progress + 1, tID);
+                    tID = setTimeout(animatePorgressBar, 1000, progressCallback, tID);
             }
-            animatePorgressBar(0, tID);
+            animatePorgressBar(progressCallback, tID);
         });
     </script>
 
